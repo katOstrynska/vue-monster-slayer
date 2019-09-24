@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Monster Slayer</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="players">
+            <player name="Player" :health="playerHealth"></player>
+            <player name="Monster" :health="monsterHealth"></player>
+        </div>
+        <button 
+            @click="startGame"
+            v-if="!gameRunning"
+            class="start-game-btn"
+        >
+            Start Game
+        </button>
+        <div v-else>
+            <section class="main-buttons">
+                <button @click="getDamage">
+                    Get Damage
+                </button>
+                <button @click="getHeal">
+                    Heal yourself
+                </button>
+                <button @click="dealSpecialDamage">
+                    Deal Special Damage
+                </button>
+            </section>
+            <ul class="logs-list">
+                <li
+                    v-for="log in logs"
+                    :class="{ 'playerDamaged': log.playerDamaged, 'monsterDamaged': log.monsterDamaged, 'playerHealed': log.playerHealed }"
+                >
+                    {{ log.message }}
+                </li>
+            </ul>
+        </div>
+        
+    </div>
+    <script src="app.vue"></script>
+</body>
+</html>
