@@ -33,7 +33,7 @@
                     Deal Special Damage
                 </button>
             </section>
-            <ul class="logs-list">
+            <ul class="logs-list" v-if="logs.length > 0">
                 <li
                     v-for="log in logs"
                     :class="{ 'playerDamaged': log.playerDamaged, 'monsterDamaged': log.monsterDamaged, 'playerHealed': log.playerHealed }"
